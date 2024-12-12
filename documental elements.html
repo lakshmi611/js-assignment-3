@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker Using Recursion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Palindrome Checker</h2>
+        <button onclick="checkPalindrome()">Check if Palindrome</button>
+        <p id="result" class="result"></p>
+    </div>
+
+    <script>
+        // Function to check if a string is a palindrome using recursion
+        function isPalindrome(str) {
+            // Remove non-alphanumeric characters and convert to lowercase
+            str = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+
+            // Base case: if the string has 0 or 1 character, it's a palindrome
+            if (str.length <= 1) {
+                return true;
+            }
+
+            // Check if the first and last characters are the same
+            if (str.charAt(0) !== str.charAt(str.length - 1)) {
+                return false;
+            }
+
+            // Recursively check the substring excluding the first and last characters
+            return isPalindrome(str.substring(1, str.length - 1));
+        }
+
+        // Function to get input from user and display the result
+        function checkPalindrome() {
+            const userInput = prompt("Enter a string to check if it's a palindrome:");
+
+            // Validate user input
+            if (!userInput) {
+                alert("Please enter a valid string.");
+                return;
+            }
+
+            // Call the isPalindrome function
+            if (isPalindrome(userInput)) {
+                document.getElementById('result').textContent = `"${userInput}" is a palindrome!`;
+            } else {
+                document.getElementById('result').textContent = `"${userInput}" is not a palindrome.`;
+            }
+        }
+    </script>
+</body>
+</html>

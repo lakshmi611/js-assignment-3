@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker Using Recursion</title>
+    <script>
+        // Function to check if a string is a palindrome using recursion
+        function isPalindrome(str) {
+            // Remove spaces and convert to lowercase for case-insensitive comparison
+            str = str.replace(/\s+/g, '').toLowerCase();
+
+            // Base case: if the string has 0 or 1 character, it's a palindrome
+            if (str.length <= 1) {
+                return true;
+            }
+            
+            // Check the first and last characters
+            if (str.charAt(0) !== str.charAt(str.length - 1)) {
+                return false;
+            }
+
+            // Recursively check the substring excluding the first and last characters
+            return isPalindrome(str.substring(1, str.length - 1));
+        }
+
+        // Function to take input from user and check if it is a palindrome
+        function checkPalindrome() {
+            let userInput = prompt("Enter a string to check if it's a palindrome:");
+
+            // Validate input
+            if (userInput === null || userInput.trim() === "") {
+                alert("Please enter a valid string.");
+                return;
+            }
+
+            // Call the isPalindrome function
+            if (isPalindrome(userInput)) {
+                alert("Yes, it's a palindrome!");
+            } else {
+                alert("No, it's not a palindrome.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <p>Click the button below to check if a string is a palindrome:</p>
+    <button onclick="checkPalindrome()">Check Palindrome</button>
+</body>
+</html>

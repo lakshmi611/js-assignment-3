@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Sequence Using Recursion</title>
+    <script>
+        // Function to calculate nth Fibonacci number using recursion
+        function fibonacci(n) {
+            if (n <= 1) {
+                return n;
+            }
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+
+        // Function to generate Fibonacci sequence up to nth number
+        function generateFibonacci() {
+            const n = parseInt(document.getElementById("inputNumber").value); // Get input value
+            if (isNaN(n) || n <= 0) {
+                alert("Please enter a valid positive integer.");
+                return;
+            }
+
+            let fibNumbers = [];
+            for (let i = 0; i < n; i++) {
+                fibNumbers.push(fibonacci(i)); // Generate Fibonacci numbers
+            }
+
+            document.getElementById("result").innerHTML = "Fibonacci sequence: " + fibNumbers.join(", ");
+        }
+    </script>
+</head>
+<body>
+    <h1>Fibonacci Sequence Generator</h1>
+    <p>Enter a number to get the first 'n' Fibonacci numbers:</p>
+    
+    <input type="number" id="inputNumber" placeholder="Enter a number" min="1">
+    <button onclick="generateFibonacci()">Generate Fibonacci</button>
+    
+    <p id="result"></p>
+</body>
+</html>
